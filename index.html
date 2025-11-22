@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Website ka title + CSS linking -->
+  <meta charset="UTF-8" />
+  <title>MovieZone</title>
+
+  <!-- External CSS file -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===========================
+       TOP NAVIGATION BAR
+       ===========================
+       Isme different categories (Trending, Hollywood, etc.)
+       click karne par alag API hit hoti hai.
+    -->
+<header class="top-nav">
+  <div class="logo">MovieZone</div>
+  <nav class="nav-links">
+    <a id="nav-trending">Trending</a>
+    <a id="nav-hollywood">Hollywood</a>
+    <a id="nav-bollywood">Bollywood</a>
+    <a id="nav-tollywood">Tollywood</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-overlay">
+    <h1 class="hero-title">Explore Your Favorite Movies</h1>
+    <p class="hero-sub">Search. Discover. Watch Trailers.</p>
+  </div>
+</section>
+
+
+  <!-- ===========================
+       SEARCH SECTION
+       ===========================
+       User yahan movie ka naam likhta hai ->
+       Search API call hoti hai.
+    -->
+  <div class="search-wrapper">
+    <input type="text" id="search-input" placeholder="Search movies..." />
+    <button id="search-btn">Search</button>
+    <div id="suggestions" class="suggestions-box"></div>
+  </div>
+
+
+  <!-- ===========================
+       MOVIES DISPLAY GRID
+       ===========================
+       API se jo movies aayengi vo is grid
+       ke andar show hongi.
+    -->
+  <main class="content">
+    <h2 id="section-title" class="section-heading">Latest Releases</h2>
+
+
+    <!-- JS is grid ke andar movie cards insert karega -->
+    <div id="movie-grid" class="movie-grid"></div>
+    <div id="pagination" class="pagination"></div>
+
+
+  </main>
+
+    <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© 2025 MovieZone. All rights reserved.</span>
+      <span>Built by Shivam Jha · Powered by TMDB API</span>
+    </div>
+  </footer>
+
+  <!-- External JS file -->
+  <script src="app.js"></script>
+</body>
+</html>

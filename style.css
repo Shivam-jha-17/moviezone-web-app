@@ -1,0 +1,467 @@
+/* Body Styling */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #050814;
+  color: #fff;
+}
+
+/* ========================
+   NAVBAR (STACKED STYLE)
+   ======================== */
+.top-nav {
+  background: #111827;
+  border-bottom: 1px solid #1f2937;
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #22c55e;
+}
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+.nav-links a {
+  color: #cbd5e1;
+  cursor: pointer;
+  text-decoration: none;
+}
+.nav-links a:hover {
+  color: #22c55e;
+}
+/* =============== HERO SECTION =============== */
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 250px;            /* height adjust kar sakta hai */
+  margin: 1rem auto 1.5rem;
+  max-width: 1200px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #020617;      /* fallback color */
+}
+
+/* Background image layer */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--bg-img);   /* 👈 yahan se JS se image aayegi */
+  background-size: cover;            /* image ko perfect fit ke liye crop + fill */
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.45);
+  opacity: 0;
+  transition: opacity 0.6s ease;     /* fade-in, background-image pe transition nahi */
+}
+
+/* Jab image load ho jaye */
+.hero.loaded::before {
+  opacity: 1;
+}
+
+/* Overlay content (text etc.) */
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+}
+
+.hero-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  margin-top: 0.3rem;
+}
+
+
+/* Transparent + stacked search bar */
+.search-wrapper {
+  display: flex;
+  max-width: 600px;
+  margin: 1.2rem auto 1.5rem;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 20;
+
+  padding: 0.5rem 0.6rem 0.5rem 1rem;
+  background: rgba(15, 23, 42, 0.82);              /* dark + thoda transparent */
+  backdrop-filter: blur(10px);                     /* glass effect */
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+/* Suggestions dropdown */
+.suggestions-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 0.25rem;
+
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  display: none;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  z-index: 50;
+}
+
+.suggestion-item {
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+}
+
+.suggestion-item:hover {
+  background: #1f2937;
+}
+
+/* Input transparent inside bar */
+#search-input {
+  flex: 1;
+  padding: 0.55rem 0.3rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  background: transparent;
+  color: #ffffff;
+  outline: none;
+}
+#search-input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Search button */
+#search-btn {
+  padding: 0.5rem 1.1rem;
+  border: none;
+  background: #22c55e;
+  color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+#search-btn:hover {
+  background: #16a34a;
+}
+
+/* Section heading ko thoda style dene ke liye */
+.section-heading {
+  display: flex;           /* icon + text ek line me */
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Heading ke left me icon (symbol) add karna */
+.section-heading::before {
+  content: "🎬";           /* yahan symbol change kar sakta hai – ⭐, 🔥, 🎞️ etc. */
+  font-size: 1.4rem;
+}
+
+/* ========================
+   MOVIE GRID
+   ======================== */
+.content {
+  max-width: 1200px;
+  margin: auto;
+}
+.movie-grid {
+  display: grid;
+  margin-top: 1rem;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+/* Individual Movie Cards */
+.movie-card {
+  display: block;                /* link ko block card ki tarah dikhane ke liye */
+  text-decoration: none;         /* underline hatane ke liye */
+  color: inherit;                /* text color same rakho */
+  border-radius: 8px;
+  overflow: hidden;
+  background: #111827;
+  border: 1px solid #1f2937;
+}
+
+/* Movie Poster */
+.movie-card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+
+/* Movie Text Info */
+.movie-card-body {
+  padding: 0.5rem;
+}
+.movie-card-title {
+  font-weight: 600;
+}
+.movie-card-meta {
+  color: #9ca3af;
+  font-size: 0.85rem;
+}
+
+/* Common class: kisi bhi cheez ko hide karne ke liye */
+.hidden {
+  display: none;
+}
+
+/* Movie details container */
+.movie-details {
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  background: #111827;
+  border: 1px solid #1f2937;
+  display: flex;
+  gap: 1rem;
+}
+
+/* Trailer section (details page) */
+.movie-details-trailer {
+  margin-top: 1rem;
+}
+
+.movie-details-trailer h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.movie-details-trailer iframe {
+  width: 100%;
+  max-width: 560px;      /* optional width limit */
+  aspect-ratio: 16 / 9;  /* responsive video */
+  border: none;
+  border-radius: 8px;
+}
+
+/* Poster part (left side) */
+.movie-details-poster img {
+  width: 180px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Text details (right side) */
+.movie-details-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.movie-details-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.movie-details-meta {
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.movie-details-rating {
+  font-weight: 600;
+  color: #fbbf24;
+}
+
+.movie-details-overview {
+  font-size: 0.95rem;
+  color: #e5e7eb;
+}
+
+.movie-details-cast {
+  font-size: 0.9rem;
+  color: #cbd5f5;
+}
+
+/* Pagination buttons */
+.pagination {
+  display: flex;
+  gap: 8px;
+  margin: 20px 0;
+  justify-content: center;
+}
+
+.page-btn {
+  padding: 6px 12px;
+  background: #1f2937;
+  color: white;
+  border: 1px solid #4b5563;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.page-btn.active {
+  background: #22c55e;
+  border-color: #22c55e;
+}
+
+.page-btn:hover {
+  background: #374151;
+}
+/* Home button ko thoda highlight karo */
+.page-btn.home-btn {
+  background: #22c55e;
+  border-color: #22c55e;
+  color: #000;
+  font-weight: 600;
+}
+
+.page-btn.home-btn:hover {
+  background: #16a34a;
+}
+
+
+/* Close button (agar kabhi use kare) */
+.details-close {
+  border: none;
+  background: transparent;
+  color: #9ca3af;
+  font-size: 1.4rem;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-left: auto;
+}
+
+/* Footer styling */
+.site-footer {
+  margin-top: 2rem;
+  padding: 1rem 0;
+  border-top: 1px solid #1f2937;
+  background: #020617;             /* thoda dark background */
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+/* Mobile pe footer text center ho jaye */
+@media (max-width: 600px) {
+  .footer-inner {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* Mobile ke liye responsive layout */
+@media (max-width: 700px) {
+  .movie-details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .movie-details-poster img {
+    width: 140px;
+    height: 210px;
+  }
+}
+/* =========================
+   MOBILE TWEAKS (<= 600px)
+   ========================= */
+@media (max-width: 600px) {
+  /* Navbar ko thoda compact + readable bana do */
+  .top-nav {
+    padding: 0.6rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+  }
+
+  /* Hero section chhote screen pe kam height ka */
+  .hero {
+    height: 180px;
+    margin: 0.6rem auto 1rem;
+  }
+
+  .hero-overlay {
+    padding: 1rem;
+  }
+
+  .hero-title {
+    font-size: 1.3rem;
+  }
+
+  .hero-sub {
+    font-size: 0.9rem;
+  }
+
+  /* Search bar screen width ke hisaab se */
+  .search-wrapper {
+    max-width: 92%;
+    margin: 0.8rem auto 1.2rem;
+    padding: 0.4rem 0.6rem 0.4rem 0.8rem;
+  }
+
+  #search-input {
+    font-size: 0.9rem;
+  }
+
+  #search-btn {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  /* Heading thodi chhoti */
+  .section-heading {
+    font-size: 1.1rem;
+    margin-top: 0.6rem;
+  }
+
+  /* Cards ki height thodi kam */
+  .movie-card img {
+    height: 200px;
+  }
+
+  .movie-card-body {
+    padding: 0.4rem;
+  }
+
+  /* Pagination buttons chhote */
+  .page-btn {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+}
